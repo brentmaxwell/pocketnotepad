@@ -341,7 +341,7 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:PocketNotepadInstall"
-        "Manufacturer" = "8:Survivor Corps"
+        "Manufacturer" = "8:Brent Maxwell"
         "OSVersionMin" = "8:4.0"
         "OSVersionMax" = "8:6.99"
         "NoUninstall" = "11:FALSE"
@@ -352,7 +352,7 @@
         {
             "{605BE39E-5046-48BD-AEC0-63C3A46626D5}:_C5E4CA11EB1E48FB9CE4990F69290053"
             {
-            "SourcePath" = "8:..\\PocketNotepad\\obj\\Debug\\PocketNotepad.exe"
+            "SourcePath" = "8:..\\PocketNotepad\\obj\\Release\\PocketNotepad.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_3D0A8DD56EFF4F428837F9D51B275EB2"
