@@ -18,6 +18,7 @@
     <FormFactorID>
     </FormFactorID>
     <ApplicationIcon>Resources\notepad.ico</ApplicationIcon>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
