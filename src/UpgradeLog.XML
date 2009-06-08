@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="PocketNotepad">
+</Property><Property Name="Solution File" Value="F:\Development\Google Code\pocketnotepad\src\PocketNotepad.sln">
+</Property><Property Name="Date" Value="Friday, June 05, 2009">
+</Property><Property Name="Time" Value="11:09 AM">
+</Property></Properties><Event ErrorLevel="0" Project="PocketNotepad" Source="PocketNotepad\PocketNotepad.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="PocketNotepad" Source="PocketNotepad\PocketNotepad.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="PocketNotepad.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="PocketNotepad.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="PocketNotepad" Source="PocketNotepad\Properties\Resources.resx" Description="File converted successfully">
+</Event><Event ErrorLevel="3" Project="PocketNotepad" Source="PocketNotepad\Properties\Resources.resx" Description="Converted">
+</Event><Event ErrorLevel="0" Project="PocketNotepad" Source="PocketNotepad\PocketNotepad.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>

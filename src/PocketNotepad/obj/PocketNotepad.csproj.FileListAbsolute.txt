@@ -12,3 +12,10 @@ F:\Development\Google Code\pocketnotepad\src\PocketNotepad\obj\Release\PocketNot
 F:\Development\Google Code\pocketnotepad\src\PocketNotepad\obj\Release\PocketNotepad.csproj.GenerateResource.Cache
 F:\Development\Google Code\pocketnotepad\src\PocketNotepad\obj\Release\PocketNotepad.exe
 F:\Development\Google Code\pocketnotepad\src\PocketNotepad\obj\Release\PocketNotepad.pdb
+P:\Development\Google Code\pocketnotepad\src\PocketNotepad\bin\Release\PocketNotepad.exe
+P:\Development\Google Code\pocketnotepad\src\PocketNotepad\bin\Release\PocketNotepad.pdb
+P:\Development\Google Code\pocketnotepad\src\PocketNotepad\obj\Release\ResolveAssemblyReference.cache
+P:\Development\Google Code\pocketnotepad\src\PocketNotepad\obj\Release\PocketNotepad.Properties.Resources.resources
+P:\Development\Google Code\pocketnotepad\src\PocketNotepad\obj\Release\PocketNotepad.csproj.GenerateResource.Cache
+P:\Development\Google Code\pocketnotepad\src\PocketNotepad\obj\Release\PocketNotepad.exe
+P:\Development\Google Code\pocketnotepad\src\PocketNotepad\obj\Release\PocketNotepad.pdb
