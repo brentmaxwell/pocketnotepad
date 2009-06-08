@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual Studio 2005
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PocketNotepad", "PocketNotepad\PocketNotepad.csproj", "{5F53063E-FAF4-423D-844A-D718C8AB12FD}"
 EndProject
 Project("{B900F1C2-3D47-4FEC-85B3-04AAF18C3634}") = "PocketNotepadInstall", "PocketNotepadInstall\PocketNotepadInstall.vddproj", "{5C32D782-71A8-45CB-A907-92C23526030D}"
