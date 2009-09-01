@@ -57,6 +57,15 @@ namespace PocketNotepad.Properties {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to Text files|*.txt|XML files|*.xml|HTML files|*.html|All files|*.*.
+        /// </summary>
+        internal static string Filetypes {
+            get {
+                return ResourceManager.GetString("Filetypes", resourceCulture);
+            }
+        }
+        
         internal static System.Drawing.Icon notepad {
             get {
                 object obj = ResourceManager.GetObject("notepad", resourceCulture);

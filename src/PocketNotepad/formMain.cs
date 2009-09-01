@@ -173,33 +173,11 @@ namespace PocketNotepad
                             );
         }
 
-        private void menuItemContextCut_Click(object sender, EventArgs e)
-        {
-            this.Cut();
-        }
-
-        private void menuItemContextCopy_Click(object sender, EventArgs e)
-        {
-            this.Copy();
-        }
-
-        private void menuItemContextPaste_Click(object sender, EventArgs e)
-        {
-            this.Paste();
-        }
-
-        private void menuItemContextSelectAll_Click(object sender, EventArgs e)
-        {
-            this.textBoxDoc.SelectAll();
-        }
-
-        #endregion
+       #endregion
 
         #region Functions
 
-        /// <summary>
-        /// Checks to see if the document has been modified, and request confirmation if it has
-        /// </summary>
+        /// <summary>Checks to see if the document has been modified, and request confirmation if it has</summary>
         private DialogResult SaveConfirm()
         {
             if (this.textBoxDoc.Modified)
@@ -212,9 +190,7 @@ namespace PocketNotepad
             }
         }
 
-        /// <summary>
-        /// Clears the selected text
-        /// </summary>
+        /// <summary>Clears the selected text</summary>
         private void Clear()
         {
             if (this.textBoxDoc.SelectedText != "")
@@ -226,9 +202,7 @@ namespace PocketNotepad
             }
         }
 
-        /// <summary>
-        /// Copies the selected text to the clipboard
-        /// </summary>
+        /// <summary>Copies the selected text to the clipboard</summary>
         private void Copy()
         {
             if (this.textBoxDoc.SelectedText != "")
@@ -237,20 +211,14 @@ namespace PocketNotepad
             }
         }
 
-
-        /// <summary>
-        /// Cuts the selected text to the clipboard
-        /// </summary>
+        /// <summary>Cuts the selected text to the clipboard</summary>
         private void Cut()
         {
             this.Copy();
             this.Clear();
         }
 
-
-        /// <summary>
-        /// Pastes the contents of the clipboard
-        /// </summary>
+        /// <summary>Pastes the contents of the clipboard</summary>
         private void Paste()
         {
             IDataObject iData = Clipboard.GetDataObject();
@@ -267,9 +235,7 @@ namespace PocketNotepad
             }
         }
 
-        /// <summary>
-        /// Asks user for a file to open, and opens it
-        /// </summary>
+        /// <summary>Asks user for a file to open, and opens it</summary>
         private bool OpenFile()
         {
             if (this.openFileDialog1.ShowDialog() == DialogResult.OK)
@@ -278,9 +244,7 @@ namespace PocketNotepad
                 return false;
         }
 
-        /// <summary>
-        /// Opens the selected file
-        /// </summary>
+        /// <summary>Opens the selected file</summary>
         /// <param name="name">Filename to be opened</param>
         private bool OpenFile(string name)
         {
@@ -315,10 +279,7 @@ namespace PocketNotepad
             }
         }
 
-
-        /// <summary>
-        /// Saves the current file
-        /// </summary>
+        /// <summary>Saves the current file</summary>
         private bool SaveFile()
         {
             if (this.filename == null)
