@@ -193,12 +193,11 @@ namespace PocketNotepad
             // 
             // openFileDialog1
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            this.openFileDialog1.Filter = "Text Files|*.txt|All Files|*.*";
+            this.openFileDialog1.Filter = global::PocketNotepad.Properties.Resources.Filetypes;
             // 
             // saveFileDialog1
             // 
-            this.saveFileDialog1.Filter = "Text Files|*.txt";
+            this.saveFileDialog1.Filter = global::PocketNotepad.Properties.Resources.Filetypes;
             // 
             // contextMenu1
             // 
@@ -210,22 +209,22 @@ namespace PocketNotepad
             // menuItemContextCut
             // 
             this.menuItemContextCut.Text = "Cut";
-            this.menuItemContextCut.Click += new System.EventHandler(this.menuItemContextCut_Click);
+            this.menuItemContextCut.Click += new System.EventHandler(this.menuItemCut_Click);
             // 
             // menuItemContextCopy
             // 
             this.menuItemContextCopy.Text = "Copy";
-            this.menuItemContextCopy.Click += new System.EventHandler(this.menuItemContextCopy_Click);
+            this.menuItemContextCopy.Click += new System.EventHandler(this.menuItemCopy_Click);
             // 
             // menuItemContextPaste
             // 
             this.menuItemContextPaste.Text = "Paste";
-            this.menuItemContextPaste.Click += new System.EventHandler(this.menuItemContextPaste_Click);
+            this.menuItemContextPaste.Click += new System.EventHandler(this.menuItemPaste_Click);
             // 
             // menuItemContextSelectAll
             // 
             this.menuItemContextSelectAll.Text = "Select All";
-            this.menuItemContextSelectAll.Click += new System.EventHandler(this.menuItemContextSelectAll_Click);
+            this.menuItemContextSelectAll.Click += new System.EventHandler(this.menuItemSelectAll_Click);
             // 
             // formMain
             // 
