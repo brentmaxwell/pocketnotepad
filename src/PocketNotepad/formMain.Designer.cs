@@ -183,6 +183,7 @@ namespace PocketNotepad
             // 
             this.textBoxDoc.AcceptsReturn = true;
             this.textBoxDoc.AcceptsTab = true;
+            this.textBoxDoc.ContextMenu = this.contextMenu1;
             this.textBoxDoc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBoxDoc.Location = new System.Drawing.Point(0, 0);
             this.textBoxDoc.MaxLength = 2147483647;
