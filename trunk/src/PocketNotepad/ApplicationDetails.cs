@@ -7,46 +7,76 @@ namespace PocketNotepad
 
     public static class ApplicationDetails
     {
-        public enum AttributeType
+        public static string Title
         {
-            Title,
-            Product,
-            Description,
-            Copyright,
-            Company,
-            Version,
+            get
+            {
+                return ((AssemblyTitleAttribute)Attribute.GetCustomAttribute(Assembly.GetExecutingAssembly(), typeof(AssemblyTitleAttribute))).Title;
+            }
         }
 
-        public static string Get(AttributeType attr)
+        public static string Description
         {
-            string output = "";
-            switch (attr)
+            get
             {
-                case AttributeType.Title:
-                    AssemblyTitleAttribute title = (AssemblyTitleAttribute)Attribute.GetCustomAttribute(Assembly.GetExecutingAssembly(), typeof(AssemblyTitleAttribute));
-                    output = title.Title;
-                    break;
-                case AttributeType.Product:
-                    AssemblyProductAttribute product = (AssemblyProductAttribute)Attribute.GetCustomAttribute(Assembly.GetExecutingAssembly(), typeof(AssemblyProductAttribute));
-                    output = product.Product;
-                    break;
-                case AttributeType.Description:
-                    AssemblyDescriptionAttribute description = (AssemblyDescriptionAttribute)Attribute.GetCustomAttribute(Assembly.GetExecutingAssembly(), typeof(AssemblyDescriptionAttribute));
-                    output = description.Description;
-                    break;
-                case AttributeType.Copyright:
-                    AssemblyCopyrightAttribute copyright = (AssemblyCopyrightAttribute)Attribute.GetCustomAttribute(Assembly.GetExecutingAssembly(), typeof(AssemblyCopyrightAttribute));
-                    output = copyright.Copyright;
-                    break;
-                case AttributeType.Company:
-                    AssemblyCompanyAttribute company = (AssemblyCompanyAttribute)Attribute.GetCustomAttribute(Assembly.GetExecutingAssembly(), typeof(AssemblyCompanyAttribute));
-                    output = company.Company;
-                    break;
-                case AttributeType.Version:
-                    output = Assembly.GetExecutingAssembly().GetName().Version.ToString();
-                    break;
+                return ((AssemblyDescriptionAttribute)Attribute.GetCustomAttribute(Assembly.GetExecutingAssembly(), typeof(AssemblyDescriptionAttribute))).Description;
             }
-            return output;
+        }
+                    
+        public static string Configuration
+        {
+            get
+            {
+                return ((AssemblyConfigurationAttribute)Attribute.GetCustomAttribute(Assembly.GetExecutingAssembly(), typeof(AssemblyConfigurationAttribute))).Configuration;
+            }
+        }
+
+        public static string Company
+        {
+            get
+            {
+                return ((AssemblyCompanyAttribute)Attribute.GetCustomAttribute(Assembly.GetExecutingAssembly(), typeof(AssemblyCompanyAttribute))).Company;
+            }
+        }
+        
+        public static string Product
+        {
+            get
+            {
+                return ((AssemblyProductAttribute)Attribute.GetCustomAttribute(Assembly.GetExecutingAssembly(), typeof(AssemblyProductAttribute))).Product;
+            }
+        }
+
+        public static string Copyright
+        {
+            get
+            {
+                return ((AssemblyCopyrightAttribute)Attribute.GetCustomAttribute(Assembly.GetExecutingAssembly(), typeof(AssemblyCopyrightAttribute))).Copyright;
+            }
+        }
+
+        public static string Trademark
+        {
+            get
+            {
+                return ((AssemblyTrademarkAttribute)Attribute.GetCustomAttribute(Assembly.GetExecutingAssembly(), typeof(AssemblyTrademarkAttribute))).Trademark;
+            }
+        }
+
+        public static string Culture
+        {
+            get
+            {
+                return ((AssemblyCultureAttribute)Attribute.GetCustomAttribute(Assembly.GetExecutingAssembly(), typeof(AssemblyCultureAttribute))).Culture;
+            }
+        }
+
+        public static string Version
+        {
+            get
+            {
+                return Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            }
         }
     }
 }
