@@ -14,11 +14,11 @@ namespace PocketNotepad
         {
             if (argv != null && argv.Length != 0)
             {
-                Application.Run(new formMain(argv[0]));
+                Application.Run(new formNotepad(argv[0]));
             }
             else
             {
-                Application.Run(new formMain());
+                Application.Run(new formNotepad());
             }
         }
     }

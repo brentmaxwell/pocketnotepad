@@ -9,29 +9,42 @@ using System.IO;
 
 namespace PocketNotepad
 {
-    public partial class formMain : Form
+    public partial class formNotepad : Form
     {
         #region Initialization stuff
 
-        private string filename;
+        /// <summary>
+        /// Private variable for the filename of the document.
+        /// </summary>
+        private string _filename;
 
-        public formMain()
+        /// <summary>
+        /// Initializes the notepad object with a new document.
+        /// </summary>
+        public formNotepad()
         {
-            InitializeComponent();
-            this.filename = null;
+            this.InitializeComponent();
+            this._filename = null;
         }
 
-        public formMain(string filename)
+        /// <summary>
+        /// Initializes the notepad object with an existing file.
+        /// </summary>
+        /// <param name="filename">Path of file to open</param>
+        public formNotepad(string filename)
         {
-            InitializeComponent();
-            this.filename = filename;
-            this.OpenFile(this.filename);
+            this.InitializeComponent();
+            this._filename = filename;
+            this.OpenFile(this._filename);
         }
 
         #endregion
 
         #region Click Events
 
+        /// <summary>
+        /// Starts a new document, requesting save confirmation if the document has been modified.
+        /// </summary>
         private void menuItemNew_Click(object sender, EventArgs e)
         {
             switch (this.SaveConfirm())
@@ -41,16 +54,21 @@ namespace PocketNotepad
                     {
                         this.textBoxDoc.Text = "";
                         this.textBoxDoc.Modified = false;
-                        this.filename = null;
+                        this._filename = null;
                     }
                     break;
                 case DialogResult.No:
                     this.textBoxDoc.Text = "";
-                    this.filename = null;
+                    this._filename = null;
+                    break;
+                case DialogResult.Cancel:
                     break;
             }
         }
 
+        /// <summary>
+        /// Opens a new document, requesting save confirmation if the exisiting document has been modified.
+        /// </summary>
         private void menuItemOpen_Click(object sender, EventArgs e)
         {
             switch (this.SaveConfirm())
@@ -64,20 +82,30 @@ namespace PocketNotepad
                 case DialogResult.No:
                     this.OpenFile();
                     break;
+                case DialogResult.Cancel:
+                    break;
             }
         }
 
+        /// <summary>
+        /// Saves the current document.
+        /// </summary>
         private void menuItemSave_Click(object sender, EventArgs e)
         {
             this.SaveFile();
         }
 
+        /// <summary>
+        /// Saves the current document with a new filename
+        /// </summary>
         private void menuItemSaveAs_Click(object sender, EventArgs e)
         {
-            this.filename = null;
-            this.SaveFile();
+            this.SaveFileAs();
         }
 
+        /// <summary>
+        /// Exits the application, requesting save confirmation if the document has been modified.
+        /// </summary>
         private void menuItemExit_Click(object sender, EventArgs e)
         {
             switch (this.SaveConfirm())
@@ -91,34 +119,54 @@ namespace PocketNotepad
                 case DialogResult.No:
                     Application.Exit();
                     break;
+                case DialogResult.Cancel:
+                    break;
             }
         }
 
+        /// <summary>
+        /// Undo the last action.
+        /// </summary>
         private void menuItemUndo_Click(object sender, EventArgs e)
         {
             this.textBoxDoc.Undo();
         }
 
+        /// <summary>
+        /// Cuts the selected text.
+        /// </summary>
         private void menuItemCut_Click(object sender, EventArgs e)
         {
             this.Cut();
         }
 
+        /// <summary>
+        /// Copies the selected text.
+        /// </summary>
         private void menuItemCopy_Click(object sender, EventArgs e)
         {
             this.Copy();
         }
 
+        /// <summary>
+        /// Pastes the contents of the clipboard at the selected position.
+        /// </summary>
         private void menuItemPaste_Click(object sender, EventArgs e)
         {
             this.Paste();
         }
 
+        /// <summary>
+        /// Selects the contents of the document.
+        /// </summary>
         private void menuItemSelectAll_Click(object sender, EventArgs e)
         {
             this.textBoxDoc.SelectAll();
         }
 
+        /// <summary>
+        /// Toggles wordwrap on and off.
+        /// </summary>
         private void menuItemWordWrap_Click(object sender, EventArgs e)
         {
             switch (this.textBoxDoc.WordWrap)
@@ -136,6 +184,9 @@ namespace PocketNotepad
             }
         }
 
+        /// <summary>
+        /// Inserts the time at the selected position.
+        /// </summary>
         private void menuItemTime_Click(object sender, EventArgs e)
         {
             string DateTimeText = DateTime.Now.ToShortTimeString();
@@ -144,6 +195,9 @@ namespace PocketNotepad
             this.textBoxDoc.SelectionStart = SelectionStart + DateTimeText.Length;
         }
 
+        /// <summary>
+        /// Inserts date at the selected position.
+        /// </summary>
         private void menuItemDate_Click(object sender, EventArgs e)
         {
             string DateTimeText = DateTime.Now.ToShortDateString();
@@ -152,6 +206,9 @@ namespace PocketNotepad
             this.textBoxDoc.SelectionStart = SelectionStart + DateTimeText.Length;
         }
 
+        /// <summary>
+        /// Inserts the date and time at the selected position.
+        /// </summary>
         private void menuItemDateTime_Click(object sender, EventArgs e)
         {
             string DateTimeText = DateTime.Now.ToString();
@@ -160,24 +217,30 @@ namespace PocketNotepad
             this.textBoxDoc.SelectionStart = SelectionStart + DateTimeText.Length;
         }
 
+        /// <summary>
+        /// Shows the about dialog.
+        /// </summary>
         private void menuItemAbout_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Version " +
-                            ApplicationDetails.Get(ApplicationDetails.AttributeType.Version) + "\r\n" +
-                            ApplicationDetails.Get(ApplicationDetails.AttributeType.Copyright) + "\r\n\r\n" +
-                            ApplicationDetails.Get(ApplicationDetails.AttributeType.Description),
-                            ApplicationDetails.Get(ApplicationDetails.AttributeType.Title),
+                            ApplicationDetails.Version + "\r\n" +
+                            ApplicationDetails.Copyright + "\r\n\r\n" +
+                            ApplicationDetails.Description,
+                            ApplicationDetails.Title,
                             MessageBoxButtons.OK,
                             MessageBoxIcon.None,
                             MessageBoxDefaultButton.Button1
                             );
         }
 
-       #endregion
+        #endregion
 
         #region Functions
 
-        /// <summary>Checks to see if the document has been modified, and request confirmation if it has</summary>
+        /// <summary>
+        /// Checks to see if the document has been modified, and request confirmation if it has.
+        /// </summary>
+        /// <returns>DialogResult indicating OK or Cancel</returns>
         private DialogResult SaveConfirm()
         {
             if (this.textBoxDoc.Modified)
@@ -190,7 +253,9 @@ namespace PocketNotepad
             }
         }
 
-        /// <summary>Clears the selected text</summary>
+        /// <summary>
+        /// Clears the selected text
+        /// </summary>
         private void Clear()
         {
             if (this.textBoxDoc.SelectedText != "")
@@ -202,7 +267,9 @@ namespace PocketNotepad
             }
         }
 
-        /// <summary>Copies the selected text to the clipboard</summary>
+        /// <summary>
+        /// Copies the selected text to the clipboard
+        /// </summary>
         private void Copy()
         {
             if (this.textBoxDoc.SelectedText != "")
@@ -211,14 +278,18 @@ namespace PocketNotepad
             }
         }
 
-        /// <summary>Cuts the selected text to the clipboard</summary>
+        /// <summary>
+        /// Cuts the selected text to the clipboard
+        /// </summary>
         private void Cut()
         {
             this.Copy();
             this.Clear();
         }
 
-        /// <summary>Pastes the contents of the clipboard</summary>
+        /// <summary>
+        /// Pastes the contents of the clipboard.
+        /// </summary>
         private void Paste()
         {
             IDataObject iData = Clipboard.GetDataObject();
@@ -235,7 +306,10 @@ namespace PocketNotepad
             }
         }
 
-        /// <summary>Asks user for a file to open, and opens it</summary>
+        /// <summary>
+        /// Asks user for a file to open, and opens it.
+        /// </summary>
+        /// <returns>Boolean indicating success</returns>
         private bool OpenFile()
         {
             if (this.openFileDialog1.ShowDialog() == DialogResult.OK)
@@ -244,8 +318,11 @@ namespace PocketNotepad
                 return false;
         }
 
-        /// <summary>Opens the selected file</summary>
+        /// <summary>
+        /// Opens the selected file.
+        /// </summary>
         /// <param name="name">Filename to be opened</param>
+        /// <returns>Boolean indicating success</returns>
         private bool OpenFile(string name)
         {
             if (name != null)
@@ -259,7 +336,7 @@ namespace PocketNotepad
                     }
                     this.textBoxDoc.Text = sr.ReadToEnd();
                     sr.Close();
-                    this.filename = name;
+                    this._filename = name;
                     return true;
                 }
                 catch (Exception error)
@@ -279,33 +356,68 @@ namespace PocketNotepad
             }
         }
 
-        /// <summary>Saves the current file</summary>
+        /* TODO:
+         * I don't like the way this switches for
+         * save, save as, and save when it doesn't already have a file name.
+         */
+
+        /// <summary>
+        /// Saves the current file with a new name.
+        /// </summary>
+        /// <returns>Boolean indicating success</returns>
+        private bool SaveFileAs()
+        {
+            if (this.saveFileDialog1.ShowDialog() != DialogResult.OK)
+            {
+                return false;
+            }
+            else
+            {
+                this._filename = this.saveFileDialog1.FileName;
+            }
+            this.saveFileDialog1.FileName = "";
+            return this.SaveFile(this._filename);
+        }
+
+        /// <summary>
+        /// Saves the current file.
+        /// </summary>
+        /// <returns>Boolean indicating success</returns>
         private bool SaveFile()
         {
-            if (this.filename == null)
+            if (this._filename == null)
             {
-                if (this.saveFileDialog1.ShowDialog() != DialogResult.OK)
-                {
-                    return false;
-                }
-                else
-                {
-                    this.filename = this.saveFileDialog1.FileName;
-                }
+                return this.SaveFileAs();
+            }
+            else
+            {
+                return this.SaveFile(this._filename);
+            }
+        }
+
+        /// <summary>
+        /// Saves the current file with a filename
+        /// </summary>
+        /// <param name="filename">Path to be saved.  If null, will ask for filename.</param>
+        /// <returns>Boolean indicating success</returns>
+        private bool SaveFile(string filename)
+        {
+            if (filename == null)
+            {
+                return this.SaveFile();
             }
             try
             {
-                StreamWriter sw = new StreamWriter(this.filename);
+                StreamWriter sw = new StreamWriter(this._filename);
                 sw.Write(this.textBoxDoc.Text);
                 sw.Close();
                 this.textBoxDoc.Modified = false;
-
                 return true;
             }
             catch (Exception error)
             {
                 MessageBox.Show(
-                    "\"" + error.Message + "\" saving file \"" + this.filename + "\"",
+                    "\"" + error.Message + "\" saving file \"" + this._filename + "\"",
                     "Error",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Hand,

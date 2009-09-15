@@ -1,6 +1,6 @@
 namespace PocketNotepad
 {
-    partial class formMain
+    partial class formNotepad
     {
         /// <summary>
         /// Required designer variable.
@@ -51,13 +51,13 @@ namespace PocketNotepad
             this.menuItemSeparator2 = new System.Windows.Forms.MenuItem();
             this.menuItemAbout = new System.Windows.Forms.MenuItem();
             this.textBoxDoc = new System.Windows.Forms.TextBox();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.contextMenu1 = new System.Windows.Forms.ContextMenu();
             this.menuItemContextCut = new System.Windows.Forms.MenuItem();
             this.menuItemContextCopy = new System.Windows.Forms.MenuItem();
             this.menuItemContextPaste = new System.Windows.Forms.MenuItem();
             this.menuItemContextSelectAll = new System.Windows.Forms.MenuItem();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.SuspendLayout();
             // 
             // mainMenu1
@@ -192,14 +192,6 @@ namespace PocketNotepad
             this.textBoxDoc.Size = new System.Drawing.Size(240, 268);
             this.textBoxDoc.TabIndex = 0;
             // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.Filter = global::PocketNotepad.Properties.Resources.Filetypes;
-            // 
-            // saveFileDialog1
-            // 
-            this.saveFileDialog1.Filter = global::PocketNotepad.Properties.Resources.Filetypes;
-            // 
             // contextMenu1
             // 
             this.contextMenu1.MenuItems.Add(this.menuItemContextCut);
@@ -226,6 +218,15 @@ namespace PocketNotepad
             // 
             this.menuItemContextSelectAll.Text = "Select All";
             this.menuItemContextSelectAll.Click += new System.EventHandler(this.menuItemSelectAll_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.Filter = "Text files|*.txt|Encrypted Text Files|*.xtx|XML files|*.xml|HTML files|*.html|All" +
+                " files|*.*";
+            // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.Filter = global::PocketNotepad.Properties.Resources.Filetypes;
             // 
             // formMain
             // 

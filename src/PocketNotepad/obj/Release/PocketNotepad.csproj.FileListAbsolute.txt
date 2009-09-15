@@ -12,4 +12,4 @@ Z:\Development\Google Code\pocketnotepad\src\PocketNotepad\obj\Release\PocketNot
 Z:\Development\Google Code\pocketnotepad\src\PocketNotepad\obj\Release\PocketNotepad.csproj.GenerateResource.Cache
 Z:\Development\Google Code\pocketnotepad\src\PocketNotepad\obj\Release\PocketNotepad.exe
 Z:\Development\Google Code\pocketnotepad\src\PocketNotepad\obj\Release\PocketNotepad.pdb
-Z:\Development\Google Code\pocketnotepad\src\PocketNotepad\obj\Release\PocketNotepad.formMain.resources
+Z:\Development\Google Code\pocketnotepad\src\PocketNotepad\obj\Release\PocketNotepad.formNotepad.resources
