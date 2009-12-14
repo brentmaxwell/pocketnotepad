@@ -61,16 +61,34 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationDetails.cs" />
+    <Compile Include="formFind.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formFind.Designer.cs">
+      <DependentUpon>formFind.cs</DependentUpon>
+    </Compile>
     <Compile Include="formNotepad.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="formNotepad.Designer.cs">
       <DependentUpon>formNotepad.cs</DependentUpon>
     </Compile>
+    <Compile Include="formReplace.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formReplace.Designer.cs">
+      <DependentUpon>formReplace.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="formFind.resx">
+      <DependentUpon>formFind.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="formNotepad.resx">
       <DependentUpon>formNotepad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formReplace.resx">
+      <DependentUpon>formReplace.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -84,6 +102,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Resources\notepad.ico" />
   </ItemGroup>
   <Import Condition="'$(TargetFrameworkVersion)' == 'v1.0'" Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.v1.targets" />

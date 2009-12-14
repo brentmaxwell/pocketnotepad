@@ -1,9 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using System.IO;
 
@@ -17,6 +12,11 @@ namespace PocketNotepad
         /// Private variable for the filename of the document.
         /// </summary>
         private string _filename;
+
+        /// <summary>
+        /// Private variable for the find form
+        /// </summary>
+        private string _findtext;
 
         /// <summary>
         /// Initializes the notepad object with a new document.
@@ -164,6 +164,26 @@ namespace PocketNotepad
             this.textBoxDoc.SelectAll();
         }
 
+        private void menuItemFind_Click(object sender, EventArgs e)
+        {
+            formFind fm = new formFind();
+            if (fm.ShowDialog() == DialogResult.OK)
+            {
+                this._findtext = fm.findText;
+                ActivateFindMenu();
+                FindNext(this._findtext);
+            }
+        }
+
+        private void menuItemReplace_Click(object sender, EventArgs e)
+        {
+            formReplace fm_replace = new formReplace();
+            if (fm_replace.DialogResult == DialogResult.OK)
+            {
+                this.textBoxDoc.Text = this.textBoxDoc.Text.Replace(fm_replace.FindText, fm_replace.ReplaceText);
+            }
+        }
+        
         /// <summary>
         /// Toggles wordwrap on and off.
         /// </summary>
@@ -185,9 +205,35 @@ namespace PocketNotepad
         }
 
         /// <summary>
+        /// Increases text size
+        /// </summary>
+        private void menuItemTextSizeLarger_Click(object sender, EventArgs e)
+        {
+            float newSize = this.textBoxDoc.Font.Size + 1;
+            this.textBoxDoc.Font = new System.Drawing.Font("Courier New", newSize, System.Drawing.FontStyle.Regular);
+        }
+
+        /// <summary>
+        /// Returns text size to normal
+        /// </summary>
+        private void menuItemTextSizeNormal_Click(object sender, EventArgs e)
+        {
+            this.textBoxDoc.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular);
+        }
+
+        /// <summary>
+        /// Decreases text size
+        /// </summary>
+        private void menuItemTextSizeSmaller_Click(object sender, EventArgs e)
+        {
+            float newSize = this.textBoxDoc.Font.Size - 1;
+            this.textBoxDoc.Font = new System.Drawing.Font("Courier New", newSize, System.Drawing.FontStyle.Regular);
+        }
+
+        /// <summary>
         /// Inserts the time at the selected position.
         /// </summary>
-        private void menuItemTime_Click(object sender, EventArgs e)
+        private void menuItemInsertTime_Click(object sender, EventArgs e)
         {
             string DateTimeText = DateTime.Now.ToShortTimeString();
             int SelectionStart = this.textBoxDoc.SelectionStart;
@@ -198,7 +244,7 @@ namespace PocketNotepad
         /// <summary>
         /// Inserts date at the selected position.
         /// </summary>
-        private void menuItemDate_Click(object sender, EventArgs e)
+        private void menuItemInsertDate_Click(object sender, EventArgs e)
         {
             string DateTimeText = DateTime.Now.ToShortDateString();
             int SelectionStart = this.textBoxDoc.SelectionStart;
@@ -209,7 +255,7 @@ namespace PocketNotepad
         /// <summary>
         /// Inserts the date and time at the selected position.
         /// </summary>
-        private void menuItemDateTime_Click(object sender, EventArgs e)
+        private void menuItemInsertDateTime_Click(object sender, EventArgs e)
         {
             string DateTimeText = DateTime.Now.ToString();
             int SelectionStart = this.textBoxDoc.SelectionStart;
@@ -233,9 +279,51 @@ namespace PocketNotepad
                             );
         }
 
+        private void menuItemFindNext_Click(object sender, EventArgs e)
+        {
+            FindNext(this._findtext);
+        }
+
+        private void menuItemCancel_Click(object sender, EventArgs e)
+        {
+            DeactivateFindMenu();
+        }
+
         #endregion
 
         #region Functions
+
+        private void ActivateFindMenu()
+        {
+            this.mainMenu1.MenuItems.Remove(menuItemFile);
+            this.mainMenu1.MenuItems.Remove(menuItemMenu);
+            this.mainMenu1.MenuItems.Add(menuItemFindNext);
+            this.mainMenu1.MenuItems.Add(menuItemCancel);
+        }
+
+        private void DeactivateFindMenu()
+        {
+            this.mainMenu1.MenuItems.Remove(this.menuItemFindNext);
+            this.mainMenu1.MenuItems.Remove(this.menuItemCancel);
+            this.mainMenu1.MenuItems.Add(this.menuItemFile);
+            this.mainMenu1.MenuItems.Add(this.menuItemMenu);
+        }
+
+        private void FindNext(string FindText)
+        {
+            int nextStart = this.textBoxDoc.Text.IndexOf(this._findtext, this.textBoxDoc.SelectionStart + this.textBoxDoc.SelectionLength);
+            if (nextStart == -1)
+            {
+                MessageBox.Show("String not found");
+                DeactivateFindMenu();
+            }
+            else
+            {
+                this.textBoxDoc.SelectionStart = nextStart;
+                this.textBoxDoc.SelectionLength = this._findtext.Length;
+                this.textBoxDoc.ScrollToCaret();
+            }
+        }
 
         /// <summary>
         /// Checks to see if the document has been modified, and request confirmation if it has.
@@ -303,6 +391,7 @@ namespace PocketNotepad
                 }
                 this.textBoxDoc.Text = this.textBoxDoc.Text.Insert(selectionStart, pasteText);
                 this.textBoxDoc.SelectionStart = selectionStart + pasteText.Length;
+                this.textBoxDoc.ScrollToCaret();
             }
         }
 
@@ -321,28 +410,28 @@ namespace PocketNotepad
         /// <summary>
         /// Opens the selected file.
         /// </summary>
-        /// <param name="name">Filename to be opened</param>
+        /// <param name="filename">Filename to be opened</param>
         /// <returns>Boolean indicating success</returns>
-        private bool OpenFile(string name)
+        private bool OpenFile(string filename)
         {
-            if (name != null)
+            if (filename != null)
             {
                 try
                 {
-                    StreamReader sr = new StreamReader(name);
+                    StreamReader sr = new StreamReader(filename);
                     if (sr.BaseStream.Length > this.textBoxDoc.MaxLength)
                     {
                         throw new System.IO.IOException("File is too large");
                     }
                     this.textBoxDoc.Text = sr.ReadToEnd();
                     sr.Close();
-                    this._filename = name;
+                    this._filename = filename;
                     return true;
                 }
                 catch (Exception error)
                 {
                     MessageBox.Show(
-                        "\"" + error.Message + "\" loading file \"" + name + "\"",
+                        "\"" + error.Message + "\" loading file \"" + filename + "\"",
                         "Error",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Hand,
@@ -417,7 +506,7 @@ namespace PocketNotepad
             catch (Exception error)
             {
                 MessageBox.Show(
-                    "\"" + error.Message + "\" saving file \"" + this._filename + "\"",
+                    "\"" + error.Message + "\" saving file \"" + filename + "\"",
                     "Error",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Hand,
@@ -427,5 +516,8 @@ namespace PocketNotepad
         }
 
         #endregion
+
+        
+
     }
 }

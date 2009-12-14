@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Filetypes" xml:space="preserve">
-    <value>Text files|*.txt|XML files|*.xml|HTML files|*.html|All files|*.*</value>
+    <value>Text files|*.txt|XML files|*.xml|HTML files|*.html|CSS Files|*.css|All files|*.*</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="notepad" type="System.Resources.ResXFileRef, System.Windows.Forms">

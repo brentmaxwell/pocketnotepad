@@ -341,7 +341,7 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:PocketNotepad"
-        "Manufacturer" = "8:Brent Maxwell"
+        "Manufacturer" = "8:theBrent"
         "OSVersionMin" = "8:4.0"
         "OSVersionMax" = "8:6.99"
         "NoUninstall" = "11:FALSE"

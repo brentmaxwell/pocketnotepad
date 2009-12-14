@@ -1,12 +1,16 @@
+using System;
+using System.Reflection;
+
 namespace PocketNotepad
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-    using System.Reflection;
-
+    /// <summary>
+    /// Provides access to the attributes from the AssemblyInfo
+    /// </summary>
     public static class ApplicationDetails
     {
+        /// <summary>
+        /// The Title attribute specified in the AssemblyInfo
+        /// </summary>
         public static string Title
         {
             get
@@ -15,6 +19,9 @@ namespace PocketNotepad
             }
         }
 
+        /// <summary>
+        /// The Description attribute specified in the AssemblyInfo
+        /// </summary>
         public static string Description
         {
             get
@@ -22,7 +29,10 @@ namespace PocketNotepad
                 return ((AssemblyDescriptionAttribute)Attribute.GetCustomAttribute(Assembly.GetExecutingAssembly(), typeof(AssemblyDescriptionAttribute))).Description;
             }
         }
-                    
+
+        /// <summary>
+        /// The Configuration attribute specified in the AssemblyInfo
+        /// </summary>
         public static string Configuration
         {
             get
@@ -31,6 +41,9 @@ namespace PocketNotepad
             }
         }
 
+        /// <summary>
+        /// The Company attribute specified in the AssemblyInfo
+        /// </summary>
         public static string Company
         {
             get
@@ -38,7 +51,10 @@ namespace PocketNotepad
                 return ((AssemblyCompanyAttribute)Attribute.GetCustomAttribute(Assembly.GetExecutingAssembly(), typeof(AssemblyCompanyAttribute))).Company;
             }
         }
-        
+
+        /// <summary>
+        /// The Product attribute specified in the AssemblyInfo
+        /// </summary>
         public static string Product
         {
             get
@@ -47,6 +63,9 @@ namespace PocketNotepad
             }
         }
 
+        /// <summary>
+        /// The Copyright attribute specified in the AssemblyInfo
+        /// </summary>
         public static string Copyright
         {
             get
@@ -55,6 +74,9 @@ namespace PocketNotepad
             }
         }
 
+        /// <summary>
+        /// The Trademark attribute specified in the AssemblyInfo
+        /// </summary>
         public static string Trademark
         {
             get
@@ -63,6 +85,9 @@ namespace PocketNotepad
             }
         }
 
+        /// <summary>
+        /// The Culture attribute specified in the AssemblyInfo
+        /// </summary>
         public static string Culture
         {
             get
@@ -71,6 +96,9 @@ namespace PocketNotepad
             }
         }
 
+        /// <summary>
+        /// The Version attribute specified in the AssemblyInfo
+        /// </summary>
         public static string Version
         {
             get
