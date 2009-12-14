@@ -12,4 +12,13 @@ Z:\Development\Google Code\pocketnotepad\src\PocketNotepad\obj\Release\PocketNot
 Z:\Development\Google Code\pocketnotepad\src\PocketNotepad\obj\Release\PocketNotepad.csproj.GenerateResource.Cache
 Z:\Development\Google Code\pocketnotepad\src\PocketNotepad\obj\Release\PocketNotepad.exe
 Z:\Development\Google Code\pocketnotepad\src\PocketNotepad\obj\Release\PocketNotepad.pdb
+P:\Development\Google Code\pocketnotepad\src\PocketNotepad\bin\Release\PocketNotepad.exe
+P:\Development\Google Code\pocketnotepad\src\PocketNotepad\bin\Release\PocketNotepad.pdb
+P:\Development\Google Code\pocketnotepad\src\PocketNotepad\obj\Release\ResolveAssemblyReference.cache
+P:\Development\Google Code\pocketnotepad\src\PocketNotepad\obj\Release\PocketNotepad.formNotepad.resources
+P:\Development\Google Code\pocketnotepad\src\PocketNotepad\obj\Release\PocketNotepad.Properties.Resources.resources
+P:\Development\Google Code\pocketnotepad\src\PocketNotepad\obj\Release\PocketNotepad.csproj.GenerateResource.Cache
+P:\Development\Google Code\pocketnotepad\src\PocketNotepad\obj\Release\PocketNotepad.exe
+P:\Development\Google Code\pocketnotepad\src\PocketNotepad\obj\Release\PocketNotepad.pdb
 Z:\Development\Google Code\pocketnotepad\src\PocketNotepad\obj\Release\PocketNotepad.formNotepad.resources
+Z:\Development\Google Code\pocketnotepad\src\PocketNotepad\obj\Release\PocketNotepad.formFind.resources

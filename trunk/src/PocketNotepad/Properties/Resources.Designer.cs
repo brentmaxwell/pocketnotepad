@@ -58,7 +58,7 @@ namespace PocketNotepad.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Text files|*.txt|XML files|*.xml|HTML files|*.html|All files|*.*.
+        ///   Looks up a localized string similar to Text files|*.txt|XML files|*.xml|HTML files|*.html|CSS Files|*.css|All files|*.*.
         /// </summary>
         internal static string Filetypes {
             get {
