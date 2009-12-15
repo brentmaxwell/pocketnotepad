@@ -98,6 +98,7 @@ namespace PocketNotepad
             this.menuItemInsertDate = new System.Windows.Forms.MenuItem();
             this.menuItemInsertDateTime = new System.Windows.Forms.MenuItem();
             this.menuItemSeparator2 = new System.Windows.Forms.MenuItem();
+            this.menuItemOptions = new System.Windows.Forms.MenuItem();
             this.menuItemAbout = new System.Windows.Forms.MenuItem();
             this.menuItemFindNext = new System.Windows.Forms.MenuItem();
             this.menuItemCancel = new System.Windows.Forms.MenuItem();
@@ -119,7 +120,7 @@ namespace PocketNotepad
             this.textBoxDoc = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.menuItemOptions = new System.Windows.Forms.MenuItem();
+            this.menuItemEdit = new System.Windows.Forms.MenuItem();
             this.SuspendLayout();
             // 
             // mainMenu1
@@ -163,11 +164,7 @@ namespace PocketNotepad
             // 
             // menuItemMenu
             // 
-            this.menuItemMenu.MenuItems.Add(this.menuItemUndo);
-            this.menuItemMenu.MenuItems.Add(this.menuItemCut);
-            this.menuItemMenu.MenuItems.Add(this.menuItemCopy);
-            this.menuItemMenu.MenuItems.Add(this.menuItemPaste);
-            this.menuItemMenu.MenuItems.Add(this.menuItemSelectAll);
+            this.menuItemMenu.MenuItems.Add(this.menuItemEdit);
             this.menuItemMenu.MenuItems.Add(this.menuItemSeparator1);
             this.menuItemMenu.MenuItems.Add(this.menuItemFind);
             this.menuItemMenu.MenuItems.Add(this.menuItemReplace);
@@ -211,12 +208,12 @@ namespace PocketNotepad
             // 
             // menuItemFind
             // 
-            this.menuItemFind.Text = "Find";
+            this.menuItemFind.Text = "&Find";
             this.menuItemFind.Click += new System.EventHandler(this.menuItemFind_Click);
             // 
             // menuItemReplace
             // 
-            this.menuItemReplace.Text = "Replace";
+            this.menuItemReplace.Text = "&Replace";
             this.menuItemReplace.Click += new System.EventHandler(this.menuItemReplace_Click);
             // 
             // menuItem3
@@ -276,6 +273,11 @@ namespace PocketNotepad
             // menuItemSeparator2
             // 
             this.menuItemSeparator2.Text = "-";
+            // 
+            // menuItemOptions
+            // 
+            this.menuItemOptions.Text = "&Options";
+            this.menuItemOptions.Click += new System.EventHandler(this.menuItemOptions_Click);
             // 
             // menuItemAbout
             // 
@@ -400,10 +402,14 @@ namespace PocketNotepad
             // 
             this.saveFileDialog1.Filter = "Text files|*.txt|XML files|*.xml|HTML files|*.html|All files|*.*";
             // 
-            // menuItemOptions
+            // menuItemEdit
             // 
-            this.menuItemOptions.Text = "&Options";
-            this.menuItemOptions.Click += new System.EventHandler(this.menuItemOptions_Click);
+            this.menuItemEdit.MenuItems.Add(this.menuItemUndo);
+            this.menuItemEdit.MenuItems.Add(this.menuItemCut);
+            this.menuItemEdit.MenuItems.Add(this.menuItemCopy);
+            this.menuItemEdit.MenuItems.Add(this.menuItemPaste);
+            this.menuItemEdit.MenuItems.Add(this.menuItemSelectAll);
+            this.menuItemEdit.Text = "&Edit";
             // 
             // formNotepad
             // 
@@ -425,6 +431,7 @@ namespace PocketNotepad
         private System.Windows.Forms.MenuItem menuItemReplace;
         private System.Windows.Forms.MenuItem menuItem3;
         private System.Windows.Forms.MenuItem menuItemOptions;
+        private System.Windows.Forms.MenuItem menuItemEdit;
 
 
         
