@@ -68,8 +68,20 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_D9411887DF896287A652002E6C29C93D"
+        "OwnerKey" = "8:_C5E4CA11EB1E48FB9CE4990F69290053"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_E2AEACBD7981EAB5F7B601C47FF1298E"
         "OwnerKey" = "8:_C5E4CA11EB1E48FB9CE4990F69290053"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E2AEACBD7981EAB5F7B601C47FF1298E"
+        "OwnerKey" = "8:_D9411887DF896287A652002E6C29C93D"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -106,6 +118,12 @@
         {
         "MsmKey" = "8:_FD520921B37B2F69F12CBBC7A114E644"
         "OwnerKey" = "8:_D3108073E3E8BD555AF1B0EB4E275C8E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_FD520921B37B2F69F12CBBC7A114E644"
+        "OwnerKey" = "8:_D9411887DF896287A652002E6C29C93D"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -258,6 +276,34 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{E4F2F62A-3940-4BF5-A031-F7FA98CAAFFA}:_D9411887DF896287A652002E6C29C93D"
+            {
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:System.Runtime.Serialization, Version=3.5.0.0, Culture=neutral, PublicKeyToken=969db8053d3322ac"
+                "ScatterAssemblies"
+                {
+                    "_D9411887DF896287A652002E6C29C93D"
+                    {
+                    "Name" = "8:System.Runtime.Serialization.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:System.Runtime.Serialization.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_3D0A8DD56EFF4F428837F9D51B275EB2"
+            "Condition" = "8:"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "Register" = "3:0"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{E4F2F62A-3940-4BF5-A031-F7FA98CAAFFA}:_E2AEACBD7981EAB5F7B601C47FF1298E"
             {
             "AssemblyIsInGAC" = "11:FALSE"
@@ -389,6 +435,53 @@
             {
                 "Keys"
                 {
+                    "{B1EBC968-6B66-4532-A885-748B79AF4477}:_734C7FBFB29240E096DD1DB3EF1BFCB1"
+                    {
+                    "Name" = "8:Software"
+                    "Condition" = "8:"
+                        "Keys"
+                        {
+                            "{B1EBC968-6B66-4532-A885-748B79AF4477}:_5295AA1661D447EAA3C5922CE7EA563A"
+                            {
+                            "Name" = "8:thebrent"
+                            "Condition" = "8:"
+                                "Keys"
+                                {
+                                    "{B1EBC968-6B66-4532-A885-748B79AF4477}:_E90561284B35430AA36809D96AFA9921"
+                                    {
+                                    "Name" = "8:PocketNotepad"
+                                    "Condition" = "8:"
+                                        "Keys"
+                                        {
+                                        }
+                                        "Values"
+                                        {
+                                            "{C3684F64-58E2-4092-8E3C-D7483080DE5A}:_76771D042CC248E491662354879CC27D"
+                                            {
+                                            "Name" = "8:FileTypes"
+                                            "Condition" = "8:"
+                                            "ValueTypes" = "3:2"
+                                            "Value" = "8:Text files|*.txt|XML files|*.xml|HTML files|*.html|CSS Files|*.css|All files|*.*"
+                                            }
+                                            "{C3684F64-58E2-4092-8E3C-D7483080DE5A}:_95129A709EF949358DE4D812A72DC93C"
+                                            {
+                                            "Name" = "8:TabWidth"
+                                            "Condition" = "8:"
+                                            "ValueTypes" = "3:3"
+                                            "Value" = "3:32"
+                                            }
+                                        }
+                                    }
+                                }
+                                "Values"
+                                {
+                                }
+                            }
+                        }
+                        "Values"
+                        {
+                        }
+                    }
                 }
             }
             "HKCR"
