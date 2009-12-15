@@ -15,14 +15,16 @@ namespace PocketNotepad
         {
             this.settings = settingsObj;
             InitializeComponent();
-            this.textBoxFileTypes.Text = settings.FileTypes;
-            this.numericUpDown1.Value = (decimal)settings.TabWidth;
+            this.textBoxFileTypes.Text = this.settings.FileTypes;
+            this.numericUpDown1.Value = (decimal)this.settings.TabWidth;
+            this.checkBoxWordWrap.Checked = (bool)this.settings.WordWrap;
         }
 
         private void menuItemOk_Click(object sender, EventArgs e)
         {
             this.settings.FileTypes = this.textBoxFileTypes.Text;
             this.settings.TabWidth = (int)this.numericUpDown1.Value;
+            this.settings.WordWrap = this.checkBoxWordWrap.Checked;
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

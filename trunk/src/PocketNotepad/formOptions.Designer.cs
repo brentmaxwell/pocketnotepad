@@ -36,6 +36,7 @@
             this.textBoxFileTypes = new System.Windows.Forms.TextBox();
             this.labelTabWidth = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.checkBoxWordWrap = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // mainMenu1
@@ -98,12 +99,21 @@
             0,
             0});
             // 
+            // checkBoxWordWrap
+            // 
+            this.checkBoxWordWrap.Location = new System.Drawing.Point(3, 113);
+            this.checkBoxWordWrap.Name = "checkBoxWordWrap";
+            this.checkBoxWordWrap.Size = new System.Drawing.Size(100, 20);
+            this.checkBoxWordWrap.TabIndex = 7;
+            this.checkBoxWordWrap.Text = "Word Wrap";
+            // 
             // formOptions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(240, 268);
+            this.Controls.Add(this.checkBoxWordWrap);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.labelTabWidth);
             this.Controls.Add(this.textBoxFileTypes);
@@ -123,5 +133,6 @@
         private System.Windows.Forms.TextBox textBoxFileTypes;
         private System.Windows.Forms.Label labelTabWidth;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.CheckBox checkBoxWordWrap;
     }
 }
