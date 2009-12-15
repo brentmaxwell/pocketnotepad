@@ -456,19 +456,19 @@
                                         }
                                         "Values"
                                         {
-                                            "{C3684F64-58E2-4092-8E3C-D7483080DE5A}:_76771D042CC248E491662354879CC27D"
-                                            {
-                                            "Name" = "8:FileTypes"
-                                            "Condition" = "8:"
-                                            "ValueTypes" = "3:2"
-                                            "Value" = "8:Text files|*.txt|XML files|*.xml|HTML files|*.html|CSS Files|*.css|All files|*.*"
-                                            }
                                             "{C3684F64-58E2-4092-8E3C-D7483080DE5A}:_95129A709EF949358DE4D812A72DC93C"
                                             {
                                             "Name" = "8:TabWidth"
                                             "Condition" = "8:"
                                             "ValueTypes" = "3:3"
                                             "Value" = "3:32"
+                                            }
+                                            "{C3684F64-58E2-4092-8E3C-D7483080DE5A}:_A1C51A3ACC3D4E50956FE79DBFBEBFC0"
+                                            {
+                                            "Name" = "8:FileTypes"
+                                            "Condition" = "8:"
+                                            "ValueTypes" = "3:1"
+                                            "Value" = "8:Text files|*.txt|XML files|*.xml|HTML files|*.html|CSS Files|*.css|All files|*.*"
                                             }
                                         }
                                     }
