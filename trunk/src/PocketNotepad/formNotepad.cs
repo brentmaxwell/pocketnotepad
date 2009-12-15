@@ -1,12 +1,33 @@
 using System;
 using System.Windows.Forms;
 using System.IO;
+using System.Drawing;
+using System.Runtime.InteropServices;
 
 namespace PocketNotepad
 {
     public partial class formNotepad : Form
     {
         #region Initialization stuff
+
+        #region Tab Stops
+        // set tab stops to a width of 4
+        private const int EM_SETTABSTOPS = 0x00CB;
+        
+        [DllImport("coredll.dll", CharSet = CharSet.Auto)]
+        public static extern IntPtr SendMessage(IntPtr h, int msg, int wParam, int[] lParam);
+
+        public static void SetTabWidth(TextBox textbox, int tabWidth)
+        {
+            SendMessage(textbox.Handle, EM_SETTABSTOPS, 1,
+                        new int[] { (int)(tabWidth) });
+        }
+        #endregion
+
+        /// <summary>
+        /// Settings object
+        /// </summary>
+        private Settings settings = new Settings();
 
         /// <summary>
         /// Private variable for the filename of the document.
@@ -16,7 +37,7 @@ namespace PocketNotepad
         /// <summary>
         /// Private variable for the find form
         /// </summary>
-        private string _findtext;
+        private formFind _findForm;
 
         /// <summary>
         /// Initializes the notepad object with a new document.
@@ -24,6 +45,7 @@ namespace PocketNotepad
         public formNotepad()
         {
             this.InitializeComponent();
+            ApplySettings();
             this._filename = null;
         }
 
@@ -34,6 +56,7 @@ namespace PocketNotepad
         public formNotepad(string filename)
         {
             this.InitializeComponent();
+            ApplySettings();
             this._filename = filename;
             this.OpenFile(this._filename);
         }
@@ -164,17 +187,26 @@ namespace PocketNotepad
             this.textBoxDoc.SelectAll();
         }
 
+        /// <summary>
+        /// Shows the find form
+        /// </summary>
         private void menuItemFind_Click(object sender, EventArgs e)
         {
-            formFind fm = new formFind();
-            if (fm.ShowDialog() == DialogResult.OK)
+            _findForm = new formFind();
+            if (this._findForm.ShowDialog() == DialogResult.OK)
             {
-                this._findtext = fm.findText;
                 ActivateFindMenu();
-                FindNext(this._findtext);
+                FindNext(this._findForm.findText);
+            }
+            else
+            {
+                this._findForm.Dispose();
             }
         }
 
+        /// <summary>
+        /// Shows the replace form
+        /// </summary>
         private void menuItemReplace_Click(object sender, EventArgs e)
         {
             formReplace fm_replace = new formReplace();
@@ -182,6 +214,7 @@ namespace PocketNotepad
             {
                 this.textBoxDoc.Text = this.textBoxDoc.Text.Replace(fm_replace.FindText, fm_replace.ReplaceText);
             }
+            fm_replace.Dispose();
         }
         
         /// <summary>
@@ -264,6 +297,19 @@ namespace PocketNotepad
         }
 
         /// <summary>
+        /// Show the options box
+        /// </summary>
+        private void menuItemOptions_Click(object sender, EventArgs e)
+        {
+            formOptions fmo = new formOptions(settings);
+            if (fmo.ShowDialog() == DialogResult.OK)
+            {
+                ApplySettings();
+            }
+            fmo.Dispose();
+        }
+
+        /// <summary>
         /// Shows the about dialog.
         /// </summary>
         private void menuItemAbout_Click(object sender, EventArgs e)
@@ -279,11 +325,17 @@ namespace PocketNotepad
                             );
         }
 
+        /// <summary>
+        /// Finds the next item searched for with the Find dialog
+        /// </summary>
         private void menuItemFindNext_Click(object sender, EventArgs e)
         {
-            FindNext(this._findtext);
+            FindNext(this._findForm.findText);
         }
 
+        /// <summary>
+        /// Cancels the find
+        /// </summary>
         private void menuItemCancel_Click(object sender, EventArgs e)
         {
             DeactivateFindMenu();
@@ -293,6 +345,9 @@ namespace PocketNotepad
 
         #region Functions
 
+        /// <summary>
+        /// Activates the menu when finding text
+        /// </summary>
         private void ActivateFindMenu()
         {
             this.mainMenu1.MenuItems.Remove(menuItemFile);
@@ -301,17 +356,25 @@ namespace PocketNotepad
             this.mainMenu1.MenuItems.Add(menuItemCancel);
         }
 
+        /// <summary>
+        /// Deactivates the find menu
+        /// </summary>
         private void DeactivateFindMenu()
         {
+            this._findForm.Dispose();
             this.mainMenu1.MenuItems.Remove(this.menuItemFindNext);
             this.mainMenu1.MenuItems.Remove(this.menuItemCancel);
             this.mainMenu1.MenuItems.Add(this.menuItemFile);
             this.mainMenu1.MenuItems.Add(this.menuItemMenu);
         }
 
+        /// <summary>
+        /// Finds the next instance of the string
+        /// </summary>
+        /// <param name="FindText">String to find</param>
         private void FindNext(string FindText)
         {
-            int nextStart = this.textBoxDoc.Text.IndexOf(this._findtext, this.textBoxDoc.SelectionStart + this.textBoxDoc.SelectionLength);
+            int nextStart = this.textBoxDoc.Text.IndexOf(this._findForm.findText, this.textBoxDoc.SelectionStart + this.textBoxDoc.SelectionLength);
             if (nextStart == -1)
             {
                 MessageBox.Show("String not found");
@@ -320,9 +383,18 @@ namespace PocketNotepad
             else
             {
                 this.textBoxDoc.SelectionStart = nextStart;
-                this.textBoxDoc.SelectionLength = this._findtext.Length;
+                this.textBoxDoc.SelectionLength = this._findForm.findText.Length;
                 this.textBoxDoc.ScrollToCaret();
             }
+        }
+
+        /// <summary>
+        /// Apply the settings from the registry
+        /// </summary>
+        private void ApplySettings()
+        {
+            this.openFileDialog1.Filter = settings.FileTypes;
+            SetTabWidth(this.textBoxDoc, settings.TabWidth);
         }
 
         /// <summary>
@@ -517,7 +589,6 @@ namespace PocketNotepad
 
         #endregion
 
-        
 
     }
 }

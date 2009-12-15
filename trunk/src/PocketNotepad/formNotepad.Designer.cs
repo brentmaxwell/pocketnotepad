@@ -119,6 +119,7 @@ namespace PocketNotepad
             this.textBoxDoc = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.menuItemOptions = new System.Windows.Forms.MenuItem();
             this.SuspendLayout();
             // 
             // mainMenu1
@@ -175,6 +176,7 @@ namespace PocketNotepad
             this.menuItemMenu.MenuItems.Add(this.menuItemTextSize);
             this.menuItemMenu.MenuItems.Add(this.menuItemInsert);
             this.menuItemMenu.MenuItems.Add(this.menuItemSeparator2);
+            this.menuItemMenu.MenuItems.Add(this.menuItemOptions);
             this.menuItemMenu.MenuItems.Add(this.menuItemAbout);
             this.menuItemMenu.Text = "Menu";
             // 
@@ -398,6 +400,11 @@ namespace PocketNotepad
             // 
             this.saveFileDialog1.Filter = "Text files|*.txt|XML files|*.xml|HTML files|*.html|All files|*.*";
             // 
+            // menuItemOptions
+            // 
+            this.menuItemOptions.Text = "&Options";
+            this.menuItemOptions.Click += new System.EventHandler(this.menuItemOptions_Click);
+            // 
             // formNotepad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -417,6 +424,7 @@ namespace PocketNotepad
         private System.Windows.Forms.MenuItem menuItemFind;
         private System.Windows.Forms.MenuItem menuItemReplace;
         private System.Windows.Forms.MenuItem menuItem3;
+        private System.Windows.Forms.MenuItem menuItemOptions;
 
 
         

@@ -22,3 +22,5 @@ P:\Development\Google Code\pocketnotepad\src\PocketNotepad\obj\Release\PocketNot
 P:\Development\Google Code\pocketnotepad\src\PocketNotepad\obj\Release\PocketNotepad.pdb
 Z:\Development\Google Code\pocketnotepad\src\PocketNotepad\obj\Release\PocketNotepad.formNotepad.resources
 Z:\Development\Google Code\pocketnotepad\src\PocketNotepad\obj\Release\PocketNotepad.formFind.resources
+Z:\Development\Google Code\pocketnotepad\src\PocketNotepad\obj\Release\PocketNotepad.formReplace.resources
+Z:\Development\Google Code\pocketnotepad\src\PocketNotepad\obj\Release\PocketNotepad.formOptions.resources
