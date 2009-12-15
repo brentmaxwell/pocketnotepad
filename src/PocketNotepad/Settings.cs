@@ -21,7 +21,7 @@ namespace PocketNotepad
             }
             set
             {
-                this.settingsKey.SetValue("FileTypes", value);
+                this.settingsKey.SetValue("FileTypes", value,RegistryValueKind.String);
             }
         }
 
@@ -33,7 +33,19 @@ namespace PocketNotepad
             }
             set
             {
-                this.settingsKey.SetValue("TabWidth", value);
+                this.settingsKey.SetValue("TabWidth", value,RegistryValueKind.DWord);
+            }
+        }
+
+        public bool WordWrap
+        {
+            get
+            {
+                return Convert.ToBoolean(this.settingsKey.GetValue("WordWrap", 1));
+            }
+            set
+            {
+                this.settingsKey.SetValue("WordWrap", Convert.ToInt16(value),RegistryValueKind.DWord);
             }
         }
     }

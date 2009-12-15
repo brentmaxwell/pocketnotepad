@@ -222,19 +222,8 @@ namespace PocketNotepad
         /// </summary>
         private void menuItemWordWrap_Click(object sender, EventArgs e)
         {
-            switch (this.textBoxDoc.WordWrap)
-            {
-                case true:
-                    this.menuItemWordWrap.Checked = false;
-                    this.textBoxDoc.WordWrap = false;
-                    this.textBoxDoc.ScrollBars = ScrollBars.Both;
-                    break;
-                case false:
-                    this.menuItemWordWrap.Checked = true;
-                    this.textBoxDoc.WordWrap = true;
-                    this.textBoxDoc.ScrollBars = ScrollBars.Vertical;
-                    break;
-            }
+            this.menuItemWordWrap.Checked = false;
+            SetWordWrap(!this.textBoxDoc.WordWrap);
         }
 
         /// <summary>
@@ -394,7 +383,27 @@ namespace PocketNotepad
         private void ApplySettings()
         {
             this.openFileDialog1.Filter = settings.FileTypes;
+            SetWordWrap(settings.WordWrap);
             SetTabWidth(this.textBoxDoc, settings.TabWidth);
+        }
+
+        private void SetWordWrap(bool WordWrap)
+        {
+            switch (WordWrap)
+            {
+                case true:
+                    this.menuItemWordWrap.Checked = true;
+                    this.textBoxDoc.WordWrap = true;
+                    this.textBoxDoc.ScrollBars = ScrollBars.Vertical;
+                    SetTabWidth(this.textBoxDoc, settings.TabWidth);
+                    break;
+                case false:
+                    this.menuItemWordWrap.Checked = false;
+                    this.textBoxDoc.WordWrap = false;
+                    this.textBoxDoc.ScrollBars = ScrollBars.Both;
+                    SetTabWidth(this.textBoxDoc, settings.TabWidth);
+                    break;
+            }
         }
 
         /// <summary>
